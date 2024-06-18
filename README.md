@@ -170,14 +170,201 @@ SELECT * FROM KhachSan WHERE DiaDiemID = (id của địa điểm cần tìm);
 
 - Địa điểm du lịch
 
-   ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/8e0c990c-28c0-4e22-8c57-d2d9096fd8b9)
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/8e0c990c-28c0-4e22-8c57-d2d9096fd8b9)
 
 - Khách sạn
 
-   ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/8b328396-f8d0-419d-9dbc-ece655c8f5a2)
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/8b328396-f8d0-419d-9dbc-ece655c8f5a2)
 
 - Nhà hàng
 
-  ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/f2e64397-acad-4159-b5a8-137177b3ab28)
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/f2e64397-acad-4159-b5a8-137177b3ab28)
 
 - Đánh giá
+
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/6b052614-1553-4001-a898-2a2a5c6a221c)
+
+### 2.Chức năng nâng cao
+- Tự động cập nhật tổng số sao và số lượng đánh giá của một địa điểm du lịch khi có đánh giá mới
+
+CREATE TRIGGER trg_UpdateReviewStats
+
+ON DanhGia
+
+AFTER INSERT, UPDATE, DELETE
+
+AS
+
+BEGIN
+
+    -- Xử lý cho trường hợp thêm hoặc cập nhật đánh 
+    
+    IF EXISTS (SELECT * FROM inserted)
+    
+    BEGIN
+    
+        DECLARE @DiaDiemID INT;
+	
+        SELECT @DiaDiemID = DiaDiemID FROM inserted;
+
+        DECLARE @TotalStars INT;
+	
+        SELECT @TotalStars = SUM(SoSao) FROM DanhGia WHERE DiaDiemID = @DiaDiemID;
+
+        DECLARE @ReviewCount INT;
+	
+        SELECT @ReviewCount = COUNT(*) FROM DanhGia WHERE DiaDiemID = @DiaDiemID;
+
+        UPDATE DiaDiemDuLich
+	
+        SET TongSoSao = @TotalStars, SoLuongDanhGia = @ReviewCount
+	
+        WHERE ID = @DiaDiemID;
+	
+    END;
+
+    -- Xử lý cho trường hợp xóa đánh giá
+    
+    IF EXISTS (SELECT * FROM deleted)
+    
+    BEGIN
+    
+        DECLARE @DiaDiemIDDel INT;
+	
+        SELECT @DiaDiemIDDel = DiaDiemID FROM deleted;
+
+        DECLARE @TotalStarsDel INT;
+	
+        SELECT @TotalStarsDel = SUM(SoSao) FROM DanhGia WHERE DiaDiemID = @DiaDiemIDDel;
+
+        DECLARE @ReviewCountDel INT;
+	
+        SELECT @ReviewCountDel = COUNT(*) FROM DanhGia WHERE DiaDiemID = @DiaDiemIDDel;
+
+        UPDATE DiaDiemDuLich
+	
+        SET TongSoSao = @TotalStarsDel, SoLuongDanhGia = @ReviewCountDel
+	
+        WHERE ID = @DiaDiemIDDel;
+	
+    END;
+    
+END;
+
+- Duyệt qua các địa điểm du lịch và in ra tên địa điểm và số lượng khách sạn tại đó
+
+CREATE PROCEDURE ListHotelsPerLocation
+
+AS
+
+BEGIN
+
+    DECLARE @locationID INT;
+    
+    DECLARE @locationName NVARCHAR(255);
+
+        DECLARE location_cursor CURSOR FOR
+	
+        SELECT ID, TenDiaDiem FROM DiaDiemDuLich;
+
+    OPEN location_cursor;
+
+    FETCH NEXT FROM location_cursor INTO @locationID, @locationName;
+
+    -- Duyệt qua các địa điểm du lịch
+    
+    WHILE @@FETCH_STATUS = 0
+    
+    BEGIN
+    
+        -- In ra tên địa điểm và số lượng khách sạn tại đó
+	
+        PRINT 'Địa điểm: ' + @locationName + ' - Số lượng khách sạn: ' + CAST((SELECT COUNT(*) FROM KhachSan WHERE DiaDiemID = @locationID) AS NVARCHAR(10));
+
+        FETCH NEXT FROM location_cursor INTO @locationID, @locationName;
+    END;
+    
+
+    CLOSE location_cursor;
+    
+    DEALLOCATE location_cursor;
+    
+END;
+
+- Tìm kiếm thông tin
+
+-- Tạo một VIEW mới có tên 'View_HotelInfo'
+CREATE VIEW View_HotelInfo AS
+SELECT 
+    ks.ID, -- ID của khách sạn
+    ks.TenKhachSan, -- Tên của khách sạn
+    ks.DiaChi, -- Địa chỉ của khách sạn
+    ks.DiaDiemID, -- ID của địa điểm du lịch liên kết với khách sạn
+    dd.TenDiaDiem, -- Tên của địa điểm du lịch
+    ISNULL(AVG(dg.SoSao), 0) AS TrungBinhSoSao -- Tính trung bình số sao của các đánh giá, nếu không có đánh giá nào thì trả về 0
+FROM 
+    KhachSan ks -- Bảng KhachSan
+LEFT JOIN 
+    DiaDiemDuLich dd ON ks.DiaDiemID = dd.ID -- Kết nối bảng DiaDiemDuLich để lấy tên địa điểm du lịch
+LEFT JOIN 
+    DanhGia dg ON ks.ID = dg.DiaDiemID -- Kết nối bảng DanhGia để lấy các đánh giá liên quan đến khách sạn
+GROUP BY 
+    ks.ID, ks.TenKhachSan, ks.DiaChi, ks.DiaDiemID, dd.TenDiaDiem; -- Nhóm theo các cột cần thiết để tính trung bình số sao
+GO
+
+-- Kiểm tra xem VIEW có tồn tại không và xóa nếu có
+IF OBJECT_ID('View_DiaDiemDuLich', 'V') IS NOT NULL
+    DROP VIEW View_DiaDiemDuLich;
+GO
+
+-- Tạo VIEW mới để hiển thị thông tin địa điểm du lịch
+CREATE VIEW View_DiaDiemDuLich AS
+
+SELECT 
+
+    dd.ID,
+    
+    dd.TenDiaDiem,
+    
+    dd.MoTa,
+    
+    dd.DiaChi,
+    
+    dd.LoaiHinhDuLich,
+    
+    ISNULL(AVG(dg.SoSao), 0) AS TrungBinhSoSao,
+    
+    COUNT(dg.ID) AS TongSoDanhGia
+    
+FROM 
+
+    DiaDiemDuLich dd
+    
+LEFT JOIN 
+
+    DanhGia dg ON dd.ID = dg.DiaDiemID
+    
+GROUP BY 
+
+    dd.ID, dd.TenDiaDiem, dd.MoTa, dd.DiaChi, dd.LoaiHinhDuLich;
+    
+GO
+
+-- Sử dụng VIEW để lấy thông tin và sắp xếp
+
+SELECT * 
+
+FROM View_DiaDiemDuLich
+
+ORDER BY TrungBinhSoSao DESC, TenDiaDiem ASC;
+
+-- Kiểm tra xem VIEW có tên View_NhaHang đã tồn tại chưa
+
+IF OBJECT_ID('View_NhaHang', 'V') IS NOT NULL
+
+    -- Nếu tồn tại, thực hiện lệnh DROP VIEW để xóa VIEW này đi
+    
+    DROP VIEW View_NhaHang;
+    
+GO
+
