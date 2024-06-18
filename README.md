@@ -336,6 +336,8 @@ FROM View_HotelInfo
 
 ORDER BY TrungBinhSoSao DESC, TenKhachSan ASC;
 
+- Kết quả
+
 ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/2bf23361-3afb-48a8-9959-f15405cb4d7c)
 
 -- Tạo VIEW mới để hiển thị thông tin địa điểm du lịch theo tứ tự giảm dần của sao đánh giá
@@ -379,4 +381,56 @@ SELECT *
 FROM View_DiaDiemDuLich
 
 ORDER BY TrungBinhSoSao DESC, TenDiaDiem ASC;
+
+- Kết quả
+
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/4013994c-772e-4cd7-87a7-3dc5109b1e69)
+
+-- Tạo VIEW mới có tên View_NhaHang để hiển thị thông tin nhà hàng và trung bình số sao
+
+CREATE VIEW View_NhaHang AS
+
+SELECT
+
+    nh.ID,                           -- ID của nhà hàng
+    
+    nh.TenNhaHang,                   -- Tên của nhà hàng
+    
+    nh.DiaChi,                       -- Địa chỉ của nhà hàng
+    
+    nh.LoaiHinhAmThuc,               -- Loại hình ẩm thực của nhà hàng
+    
+    dd.TenDiaDiem,                   -- Tên địa điểm của nhà hàng
+    
+    ISNULL(AVG(dg.SoSao), 0) AS TrungBinhSoSao, -- Trung bình số sao của đánh giá, nếu không có đánh giá thì trả về 0
+    
+    COUNT(dg.ID) AS TongSoDanhGia    -- Tổng số lượng đánh giá của nhà hàng
+    
+FROM 
+
+    NhaHang nh                        -- Từ bảng NhaHang
+    
+LEFT JOIN
+
+DiaDiemDuLich dd ON nh.DiaDiemID = dd.ID -- LEFT JOIN với bảng DiaDiemDuLich để lấy tên địa điểm liên quan
+
+LEFT JOIN 
+
+    DanhGia dg ON nh.ID = dg.DiaDiemID -- LEFT JOIN với bảng DanhGia để lấy đánh giá liên quan
+    
+GROUP BY 
+
+    nh.ID, nh.TenNhaHang, nh.DiaChi, nh.LoaiHinhAmThuc, dd.TenDiaDiem;
+    
+GO
+
+-- Sử dụng VIEW View_NhaHang để lấy thông tin và sắp xếp theo trung bình số sao giảm dần và tên nhà hàng tăng dần
+
+SELECT * 
+
+FROM View_NhaHang
+
+ORDER BY TrungBinhSoSao DESC, TenNhaHang ASC;
+
+- Kết quả
 
