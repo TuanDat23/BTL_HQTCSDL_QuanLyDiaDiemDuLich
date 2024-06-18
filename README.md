@@ -2,6 +2,7 @@
 - Tác giả: Vi Tuấn Đạt
 - MSSV: K215480106088
 - Lớp: K57KMT
+- Ngày làm: 2024-06-13
 ## Chức Năng Cơ Bản
 ### 1. Quản lý
 1.1.Quản Lý Địa Điểm Du Lịch
@@ -87,3 +88,8 @@ Bảng DanhGia
 - DiaDiemID🔑: Là khóa ngoại (FOREIGN KEY) tham chiếu đến ID của bảng DiaDiemDuLich. Điều này thiết lập mối quan hệ giữa các bảng và cho phép truy cập thông tin về địa điểm du lịch liên quan tới từng khách sạn và nhà hàng.
 - SoSao: Số sao đánh giá.
 - BinhLuan: Bình luận của khách hàng.
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/37720870-2e99-43db-935c-ab8077953198)
+
+Sơ đồ thực thể liên kết
+
+###. Thiết lập chức năng
