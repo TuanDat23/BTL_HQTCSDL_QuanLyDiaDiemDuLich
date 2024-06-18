@@ -97,4 +97,74 @@ Bảng DanhGia
 
 Sơ đồ thực thể liên kết
 
-###. Thiết lập chức năng
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/a91efec1-cfd9-4152-9930-90d3637f4929)
+
+### 2.Thêm dữ liệu vào các bảng
+
+-- Thêm dữ liệu vào bảng DiaDiemDuLich
+
+INSERT INTO DiaDiemDuLich (TenDiaDiem, MoTa, DiaChi, LoaiHinhDuLich) VALUES
+
+(N'Đà Lạt', N'Thành phố ngàn hoa', N'Lâm Đồng', N'Nghỉ dưỡng'),
+
+(N'Hạ Long', N'Vịnh biển đẹp nhất', N'Quảng Ninh', N'Tham quan');
+
+-- Thêm dữ liệu vào bảng KhachSan
+
+INSERT INTO KhachSan (TenKhachSan, DiaChi, SoSao, DiaDiemID) VALUES
+
+(N'Khách sạn Đà Lạt Palace', N'Số 12, Đường Trần Phú', 5, 1),
+
+(N'Khách sạn Mường Thanh', N'Số 1, Đường Hạ Long', 4, 2);
+
+-- Thêm dữ liệu vào bảng NhaHang
+
+INSERT INTO NhaHang (TenNhaHang, DiaChi, LoaiHinhAmThuc, DiaDiemID) VALUES
+
+(N'Nhà hàng Hoa Đà Lạt', N'Số 15, Đường Phan Bội Châu', N'Âu', 1),
+
+(N'Nhà hàng Biển Vàng', N'Số 3, Đường Bãi Cháy', N'Hải sản', 2);
+
+-- Thêm dữ liệu vào bảng KhachHang
+
+INSERT INTO KhachHang (TenKhachHang, Email, SoDienThoai) VALUES
+
+(N'Nguyễn Văn A', N'vana@gmail.com', N'0901234567'),
+
+(N'Trần Thị B', N'thib@gmail.com', N'0912345678');
+
+
+-- Thêm dữ liệu vào bảng DanhGia
+
+INSERT INTO DanhGia (KhachHangID, DiaDiemID, SoSao, BinhLuan) VALUES
+
+(1, 1, 5, N'Rất đẹp và thơ mộng!'),
+
+(2, 2, 4, N'Cảnh đẹp nhưng dịch vụ chưa tốt.');
+
+## Thiết lập chức năng
+### 1.Chức năng cơ bản
+1.1.Chức năng tìm kiếm thông tin
+
+*Lấy danh sách các địa diểm du lịch:
+
+SELECT * FROM DiaDiemDuLich;
+
+*Lấy danh sách các khách sạn:
+
+SELECT * FROM KhachSan WHERE DiaDiemID = (id của địa điểm cần tìm);
+
+*Lấy danh sách các nhà hàng
+
+	SELECT * FROM NhaHang WHERE DiaDiemID = (id của địa điểm cần tìm);
+ 
+*Lấy danh sách đánh giá cho 1 địa điểm:
+
+	SELECT * FROM DanhGia WHERE DiaDiemID = (id của địa điểm cần tìm);
+ 
+*Lấy thông tin chi tiết của 1 khách hàng:
+
+	SELECT * FROM KhachHang WHERE ID = (id của khách hàng);
+ 
+1.2.Chức năng thêm, xóa, sửa
+
