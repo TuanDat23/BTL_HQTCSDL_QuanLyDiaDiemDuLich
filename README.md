@@ -67,8 +67,15 @@ Bảng DiaDiemDuLich
 
 Bảng KhachSan
 - ID🔑: Khóa chính, tự tăng.
-- TenKhachSan: Tên khách sạn đều được đánh dấu là NOT NULL để đảm bảo tính duy nhất của dữ liệu.
+- TenKhachSan: Tên khách sạn được đánh dấu là NOT NULL để đảm bảo tính duy nhất của dữ liệu.
 - DiaChi: Địa chỉ khách sạn.
 - SoSao: Số sao của khách sạn.
 - DiaDiemID🔑: Là khóa ngoại (FOREIGN KEY) tham chiếu đến ID của bảng DiaDiemDuLich. Điều này thiết lập mối quan hệ giữa các bảng và cho phép truy cập thông tin về địa điểm du lịch liên quan tới từng khách sạn và nhà hàng.
-  
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/fa99a22a-75aa-4c9e-9272-5639b64e98d6)
+
+Bảng NhaHang
+- ID🔑: Khóa chính, tự tăng.
+- TenNhaHang: Tên nhà hàng được đánh dấu là NOT NULL để đảm bảo tính duy nhất của dữ liệu.
+- DiaChi: Địa chỉ nhà hàng.
+- LoaiHinhAmThuc: Loại hình ẩm thực (Âu, Á, Hải sản, ...).
+- DiaDiemID🔑:  Là khóa ngoại (FOREIGN KEY) tham chiếu đến ID của bảng DiaDiemDuLich. Điều này thiết lập mối quan hệ giữa các bảng và cho phép truy cập thông tin về địa điểm du lịch liên quan tới từng khách sạn và nhà hàng.
