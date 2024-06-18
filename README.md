@@ -1,6 +1,7 @@
 # QUẢN LÝ HỆ THỐNG THÔNG TIN ĐỊA ĐIỂM DU LỊCH
-Mục tiêu bài toán: Xây dựng một hệ thống quản lý địa điểm du lịch nhằm theo dõi và quản lý thông tin về các địa điểm du lịch, khách sạn, nhà hàng, đánh giá từ khách hàng và thông tin khách hàng. Hệ thống cần cung cấp các chức năng cơ bản như thêm, xóa, sửa, và truy xuất thông tin từ cơ sở dữ liệu, cũng như các chức năng nâng cao như sử dụng trigger và cursor để tự động hóa và duyệt qua các bản ghi.
-
+- Tác giả: Vi Tuấn Đạt
+- MSSV: K215480106088
+- Lớp: K57KMT
 ## Chức Năng Cơ Bản
 
 1.1.Quản Lý Địa Điểm Du Lịch
