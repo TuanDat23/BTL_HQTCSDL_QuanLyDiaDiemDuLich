@@ -55,5 +55,12 @@ Bảng KhachHang (Phải tạo đầu tiên để các bảng khác tham chiếu
 - TenKhachHang: Tên khách hàng.
 - Email: Email của khách hàng.
 - SoDienThoai: Số điện thoại của khách hàng.
-
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/4bccf9e6-bc3c-42e9-b17c-32b969ba51b6)
+  
+Bảng DiaDiemDuLich
+- ID🔑: Khóa chính, tự tăng.
+- TenDiaDiem: Tên địa điểm du lịch.
+- MoTa: Mô tả về địa điểm.
+- DiaChi: Địa chỉ địa điểm.
+- LoaiHinhDuLich: Loại hình du lịch (nghỉ dưỡng, tham quan, ...).
   
