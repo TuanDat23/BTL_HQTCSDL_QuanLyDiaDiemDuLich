@@ -79,3 +79,11 @@ Bảng NhaHang
 - DiaChi: Địa chỉ nhà hàng.
 - LoaiHinhAmThuc: Loại hình ẩm thực (Âu, Á, Hải sản, ...).
 - DiaDiemID🔑:  Là khóa ngoại (FOREIGN KEY) tham chiếu đến ID của bảng DiaDiemDuLich. Điều này thiết lập mối quan hệ giữa các bảng và cho phép truy cập thông tin về địa điểm du lịch liên quan tới từng khách sạn và nhà hàng.
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/0e1d530f-2396-4cc1-b8d1-89e7147d47da)
+
+Bảng DanhGia
+- ID🔑: Khóa chính, tự tăng.
+- KhachHangID🔑: Là khóa ngoại (FOREIGN KEY) tham chiếu đến ID của bảng KhachHang. Điều này thiết lập mối quan hệ giữa bảng DanhGia.
+- DiaDiemID🔑: Là khóa ngoại (FOREIGN KEY) tham chiếu đến ID của bảng DiaDiemDuLich. Điều này thiết lập mối quan hệ giữa các bảng và cho phép truy cập thông tin về địa điểm du lịch liên quan tới từng khách sạn và nhà hàng.
+- SoSao: Số sao đánh giá.
+- BinhLuan: Bình luận của khách hàng.
