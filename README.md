@@ -434,3 +434,5 @@ ORDER BY TrungBinhSoSao DESC, TenNhaHang ASC;
 
 - Kết quả
 
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/bea4869c-dfe9-42f8-8d36-954b848da9bb)
+
