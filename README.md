@@ -172,4 +172,8 @@ SELECT * FROM KhachSan WHERE DiaDiemID = (id của địa điểm cần tìm);
 
    ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/8e0c990c-28c0-4e22-8c57-d2d9096fd8b9)
 
-- 
+- Khách sạn
+
+   ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/8b328396-f8d0-419d-9dbc-ece655c8f5a2)
+
+  - 
