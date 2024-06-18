@@ -52,15 +52,23 @@
 ### 1. Tạo các bảng
 Bảng KhachHang (Phải tạo đầu tiên để các bảng khác tham chiếu tới)
 - ID🔑: Khóa chính được sử dụng để xác định mỗi khách hàng một cách duy nhất, tự tăng.
-- TenKhachHang: Tên khách hàng.
+- TenKhachHang: Tên khách hàng được đặt là NOT NULL để đảm bảo mỗi khách hàng được lưu trữ đều có thông tin tên. Điều này cực kỳ quan trọng để có thể phân biệt và quản lý các khách hàng.
 - Email: Email của khách hàng.
 - SoDienThoai: Số điện thoại của khách hàng.
 ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/4bccf9e6-bc3c-42e9-b17c-32b969ba51b6)
   
 Bảng DiaDiemDuLich
 - ID🔑: Khóa chính, tự tăng.
-- TenDiaDiem: Tên địa điểm du lịch.
+- TenDiaDiem: Tên địa điểm du lịch là thông tin cần thiết và được đánh dấu là NOT NULL để đảm bảo tính chính xác và đầy đủ của dữ liệu.
 - MoTa: Mô tả về địa điểm.
 - DiaChi: Địa chỉ địa điểm.
 - LoaiHinhDuLich: Loại hình du lịch (nghỉ dưỡng, tham quan, ...).
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/bf0754f9-8ea6-4529-86b4-751b0b60bcb9)
+
+Bảng KhachSan
+- ID🔑: Khóa chính, tự tăng.
+- TenKhachSan: Tên khách sạn đều được đánh dấu là NOT NULL để đảm bảo tính duy nhất của dữ liệu.
+- DiaChi: Địa chỉ khách sạn.
+- SoSao: Số sao của khách sạn.
+- DiaDiemID🔑: Là khóa ngoại (FOREIGN KEY) tham chiếu đến ID của bảng DiaDiemDuLich. Điều này thiết lập mối quan hệ giữa các bảng và cho phép truy cập thông tin về địa điểm du lịch liên quan tới từng khách sạn và nhà hàng.
   
