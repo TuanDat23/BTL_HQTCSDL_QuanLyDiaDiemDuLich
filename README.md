@@ -176,4 +176,8 @@ SELECT * FROM KhachSan WHERE DiaDiemID = (id của địa điểm cần tìm);
 
    ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/8b328396-f8d0-419d-9dbc-ece655c8f5a2)
 
-  - 
+- Nhà hàng
+
+  ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/f2e64397-acad-4159-b5a8-137177b3ab28)
+
+- Đánh giá
