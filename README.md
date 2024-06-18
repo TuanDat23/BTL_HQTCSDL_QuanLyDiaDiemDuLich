@@ -294,7 +294,7 @@ END;
 
 - Tìm kiếm thông tin
 
--- Tạo một VIEW mới có tên 'View_HotelInfo'
+-- Tạo một VIEW mới có tên 'View_HotelInfo' hiển thị khách sạn giảm dần của sao đánh giá
 
 CREATE VIEW View_HotelInfo AS
 
@@ -336,4 +336,47 @@ FROM View_HotelInfo
 
 ORDER BY TrungBinhSoSao DESC, TenKhachSan ASC;
 
+![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/2bf23361-3afb-48a8-9959-f15405cb4d7c)
+
+-- Tạo VIEW mới để hiển thị thông tin địa điểm du lịch theo tứ tự giảm dần của sao đánh giá
+
+CREATE VIEW View_DiaDiemDuLich AS
+
+SELECT 
+
+    dd.ID,
+    
+    dd.TenDiaDiem,
+    
+    dd.MoTa,
+    
+    dd.DiaChi,
+    
+    dd.LoaiHinhDuLich,
+    
+    ISNULL(AVG(dg.SoSao), 0) AS TrungBinhSoSao,
+    
+    COUNT(dg.ID) AS TongSoDanhGia
+    
+FROM 
+
+    DiaDiemDuLich dd
+    
+LEFT JOIN 
+
+    DanhGia dg ON dd.ID = dg.DiaDiemID
+    
+GROUP BY 
+
+    dd.ID, dd.TenDiaDiem, dd.MoTa, dd.DiaChi, dd.LoaiHinhDuLich;
+    
+GO
+
+-- Sử dụng VIEW để lấy thông tin và sắp xếp
+
+SELECT * 
+
+FROM View_DiaDiemDuLich
+
+ORDER BY TrungBinhSoSao DESC, TenDiaDiem ASC;
 
