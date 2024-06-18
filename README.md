@@ -56,6 +56,7 @@ Bảng KhachHang (Phải tạo đầu tiên để các bảng khác tham chiếu
 - TenKhachHang: Tên khách hàng được đặt là NOT NULL để đảm bảo mỗi khách hàng được lưu trữ đều có thông tin tên. Điều này cực kỳ quan trọng để có thể phân biệt và quản lý các khách hàng.
 - Email: Email của khách hàng.
 - SoDienThoai: Số điện thoại của khách hàng.
+
 ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/4bccf9e6-bc3c-42e9-b17c-32b969ba51b6)
   
 Bảng DiaDiemDuLich
@@ -64,6 +65,7 @@ Bảng DiaDiemDuLich
 - MoTa: Mô tả về địa điểm.
 - DiaChi: Địa chỉ địa điểm.
 - LoaiHinhDuLich: Loại hình du lịch (nghỉ dưỡng, tham quan, ...).
+
 ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/bf0754f9-8ea6-4529-86b4-751b0b60bcb9)
 
 Bảng KhachSan
@@ -72,7 +74,8 @@ Bảng KhachSan
 - DiaChi: Địa chỉ khách sạn.
 - SoSao: Số sao của khách sạn.
 - DiaDiemID🔑: Là khóa ngoại (FOREIGN KEY) tham chiếu đến ID của bảng DiaDiemDuLich. Điều này thiết lập mối quan hệ giữa các bảng và cho phép truy cập thông tin về địa điểm du lịch liên quan tới từng khách sạn và nhà hàng.
-![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/fa99a22a-75aa-4c9e-9272-5639b64e98d6)
+
+ ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/fa99a22a-75aa-4c9e-9272-5639b64e98d6)
 
 Bảng NhaHang
 - ID🔑: Khóa chính, tự tăng.
@@ -80,7 +83,8 @@ Bảng NhaHang
 - DiaChi: Địa chỉ nhà hàng.
 - LoaiHinhAmThuc: Loại hình ẩm thực (Âu, Á, Hải sản, ...).
 - DiaDiemID🔑:  Là khóa ngoại (FOREIGN KEY) tham chiếu đến ID của bảng DiaDiemDuLich. Điều này thiết lập mối quan hệ giữa các bảng và cho phép truy cập thông tin về địa điểm du lịch liên quan tới từng khách sạn và nhà hàng.
-![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/0e1d530f-2396-4cc1-b8d1-89e7147d47da)
+
+ ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/0e1d530f-2396-4cc1-b8d1-89e7147d47da)
 
 Bảng DanhGia
 - ID🔑: Khóa chính, tự tăng.
@@ -88,6 +92,7 @@ Bảng DanhGia
 - DiaDiemID🔑: Là khóa ngoại (FOREIGN KEY) tham chiếu đến ID của bảng DiaDiemDuLich. Điều này thiết lập mối quan hệ giữa các bảng và cho phép truy cập thông tin về địa điểm du lịch liên quan tới từng khách sạn và nhà hàng.
 - SoSao: Số sao đánh giá.
 - BinhLuan: Bình luận của khách hàng.
+
 ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/37720870-2e99-43db-935c-ab8077953198)
 
 Sơ đồ thực thể liên kết
