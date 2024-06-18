@@ -168,3 +168,8 @@ SELECT * FROM KhachSan WHERE DiaDiemID = (id của địa điểm cần tìm);
  
 1.2.Chức năng thêm, xóa, sửa
 
+- Địa điểm du lịch
+
+   ![image](https://github.com/TuanDat23/BTL_HQTCSDL_QuanLyDiaThongTinDiemDuLich/assets/168843736/8e0c990c-28c0-4e22-8c57-d2d9096fd8b9)
+
+- 
