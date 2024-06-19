@@ -35,19 +35,16 @@
 - Xóa khách hàng: Cho phép xóa một khách hàng khỏi cơ sở dữ liệu.
 - Xem danh sách khách hàng: Hiển thị danh sách tất cả các khách hàng
 
-### 2. Chức Năng Truy Vấn
+### 2. Chức Năng cơ bản
 - Tìm kiếm địa điểm du lịch theo tên hoặc loại hình du lịch
 - Tìm kiếm khách sạn hoặc nhà hàng theo địa điểm du lịch
 - Xem chi tiết đánh giá của một địa điểm du lịch cụ thể
 - Xem chi tiết thông tin khách hàng
 ### 3. Chức Năng Nâng Cao
-3.1. Trigger
 - Cập nhật tổng số sao và số lượng đánh giá: Tự động cập nhật tổng số sao và số lượng đánh giá của một địa điểm du lịch khi có đánh giá mới được thêm vào hoặc khi một đánh giá bị xóa hoặc chỉnh sửa.
 
-3.2. Cursor
 - Duyệt qua các địa điểm du lịch: Tạo thủ tục lưu trữ để duyệt qua các địa điểm du lịch và thực hiện các tính toán tổng hợp như số lượng khách sạn hoặc nhà hàng tại mỗi địa điểm.
 
-3.3. Báo Cáo và Thống Kê
 - Báo cáo địa điểm du lịch phổ biến: Tạo báo cáo hiển thị các địa điểm du lịch phổ biến dựa trên số lượng đánh giá và điểm số trung bình.
 ## Thiết kế chương trình trong SQL
 ### 1. Tạo các bảng
